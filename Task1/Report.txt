@@ -1,0 +1,9 @@
+Report for Url : http://www.yahoo.com
+
+Total Count of words: 1479
+Total Count of unique words: 722
+Total Size of content: 9581
+Total Count of alphabets: 6944
+Total Count of meta tags: 14
+Top 5 most frequent words: the, to, in, and, a
+Total Count of anchor tags: 137
