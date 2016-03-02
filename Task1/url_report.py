@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 __author__ = 'Omar Salman'
 
-
+# TODO: Can you please inherit this from "object"
 class UrlReport():
 
     def __init__(self, url):
@@ -30,7 +30,8 @@ class UrlReport():
         self.soup_text = ''
 
     def get_content_size(self):
-
+        # TODO: You don't have to check for "self.html" in every function. because if there is no self.html
+        # these functions will not be called ever. is_valid() function will quit the program already. 
         if self.html:
             if not self.soup_text:
                 self.soup, self.soup_text = initialize_beautiful_soup(self.html)
@@ -39,7 +40,7 @@ class UrlReport():
             print 'The url given is not valid'
 
     def get_word_count(self):
-
+        # TODO: Same, no need to check here
         if self.html:
             if not self.soup_text:
                 self.soup, self.soup_text = initialize_beautiful_soup(self.html)
@@ -48,7 +49,7 @@ class UrlReport():
             print 'The url given is not valid'
 
     def get_unique_word_count(self):
-
+        # TODO: Also, we don't usually leave a white space below the function in python.
         if self.html:
             if not self.soup_text:
                 self.soup, self.soup_text = initialize_beautiful_soup(self.html)
@@ -61,6 +62,7 @@ class UrlReport():
         if self.html:
             if not self.soup_text:
                 self.soup, self.soup_text = initialize_beautiful_soup(self.html)
+            # TODO: Variable names should be more readable. "c" is not a proper name
             return len([c for c in self.soup_text if c in string.ascii_letters])
         else:
             print 'The url given is not valid'
@@ -79,6 +81,7 @@ class UrlReport():
         if self.html:
             if not self.soup_text:
                 self.soup, self.soup_text = initialize_beautiful_soup(self.html)
+            # Nice :)
             words = re.findall('\w+', self.soup_text.lower().encode('utf-8'))
             words_dict = {}
 
@@ -86,6 +89,7 @@ class UrlReport():
                 words_dict[each] = words_dict.get(each, 0) + 1
 
             words = sorted(words_dict.keys(), key=words_dict.get, reverse=True)
+            # Awesome..
             top_five = words[:5]
             return ', '.join(top_five)
         else:
@@ -110,7 +114,7 @@ def get_html(url):
         print "The url given is not valid"
         return ''
 
-
+# TODO: We should move these functions in a separate class if they don't belong to above class. 
 def initialize_beautiful_soup(html):
 
     soup = BeautifulSoup(html, 'html.parser')
@@ -130,6 +134,8 @@ def format_text(text):
 def main(url):
 
     report = UrlReport(url)
+    # TODO: Since we are already checking and validating the "url" in this function. 
+    # no need to make the html check in every other function. Below condition will prevent the other codes to run. 
     if report.is_valid():
         print "Total Content Size of page '" + url + "' is ",
         print report.get_content_size()
