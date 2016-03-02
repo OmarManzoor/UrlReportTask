@@ -121,12 +121,14 @@ def initialize_beautiful_soup(html):
 
 
 def format_text(text):
+
     text = re.sub('\s+', ' ', text).strip()
     text = "".join(c for c in text if c not in ('!','.',':',',',))
     return text
 
 
 def main(url):
+
     report = UrlReport(url)
     if report.is_valid():
         print "Total Content Size of page '" + url + "' is ",
@@ -143,7 +145,10 @@ def main(url):
         print report.get_anchor_tag_count()
     else:
         print "Please use a url of the form http://www.------.com"
+
+
 if __name__ == '__main__':
+
     url = sys.argv[1]
     main(url)
 
